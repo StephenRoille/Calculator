@@ -1,0 +1,34 @@
+﻿Calculator
+==========
+
+.. currentmodule:: calculator.calculator
+
+.. autoclass:: Calculator
+   :no-inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+         ~Calculator.__init__
+         ~Calculator.calculate
+         ~Calculator.init_events
+         ~Calculator.init_layout
+         ~Calculator.reset
+         ~Calculator.store
+         ~Calculator.update_display
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+         ~Calculator.clsname
+         ~Calculator.qualname
+   
+   
