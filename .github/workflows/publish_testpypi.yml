@@ -1,0 +1,38 @@
+name: Publish Package to Test-PyPI
+on:
+  release:
+    branches: [master]
+    types: [published]
+
+jobs:
+
+  publish-pkg:
+    name: Publish Package to Test-PyPI
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Upgrade pip
+        run: pip install --upgrade pip
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements-dev.txt
+          pip install -r requirements-true.txt
+
+      # requires FLIT_INDEX_URL, FLIT_USERNAME, and FLIT_PASSWORD env vars
+      - name: Publish to Test PyPI
+        run: flit publish
+        env:
+          FLIT_INDEX_URL: https://test.pypi.org/legacy/
+          FLIT_PASSWORD: "${{ secrets.FLIT_PASSWORD }}"
+          FLIT_USERNAME: "${{ secrets.FLIT_USERNAME }}"
+
+

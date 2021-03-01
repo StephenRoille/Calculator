@@ -1,0 +1,5 @@
+sphinx-autobuild~=2020.9
+sphinx-rtd-theme~=0.5
+sphinx_materialdesign_theme~=0.1
+sphinxcontrib-spelling~=7.1
+Sphinx~=3.5

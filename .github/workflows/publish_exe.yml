@@ -1,0 +1,46 @@
+name: Generate and Publish Application Executable
+on:
+  release:
+    branches: [master]
+    types: [published]
+
+jobs:
+
+  publish-exe:
+    name: Generate and Publish Application Executable
+    runs-on: windows-latest
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Upgrade pip
+        run: pip install --upgrade pip
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements-dev.txt
+          pip install -r requirements-true.txt
+
+      - name: Create Windows Installer
+        run: make installer-win64
+
+      - name: Prepare Tag
+        id: prepare_tag
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          TAG_NAME="${GITHUB_REF##refs/tags/}"
+          echo "::set-output name=tag_name::${TAG_NAME}"
+        shell: bash
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: installer-win64-${{ steps.prepare_tag.outputs.tag_name }}.exe
+          path: calculator-installer-x64.exe
+
