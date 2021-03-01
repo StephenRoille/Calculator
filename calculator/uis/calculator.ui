@@ -225,9 +225,9 @@ font: 12 14pt &quot;CMU Typewriter Text&quot;;</string>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: qlineargradient(stop:0 rgb(0, 48, 73), stop:1 rgb(0, 48, 73));
+       <string notr="true">background-color: qlineargradient(stop:0 rgb(255, 204, 229), stop:1 rgb(255, 204, 229));
 font: 57 14pt &quot;CMU Typewriter Text&quot;;
-color: rgb(255, 255, 255);</string>
+color: rgb(0, 0, 0);</string>
       </property>
       <property name="text">
        <string>=</string>

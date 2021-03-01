@@ -16,7 +16,7 @@ __repo__ = "https://www.github.com/StephenRoille/calculator"
 
 # release information
 __status__ = "development"
-__version__ = "v0.1.0"
+__version__ = "v0.2.0"
 
 metadata = {
     "author": __author__,
